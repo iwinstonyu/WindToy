@@ -28,7 +28,7 @@ using std::endl;
 
 namespace wind {
 
-void WhatAmountDoubelQuotes()
+void WhatAboutDoubleQuotes()
 {
 	cout << "\"" << endl;
 	cout << '"' << endl;

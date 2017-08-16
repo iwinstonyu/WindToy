@@ -2,7 +2,7 @@
 //	<one line to give the program's name and a brief idea of what it does.>
 //	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/8/14 17:21:17
+//	Created at 2017/8/16 11:24:37
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 
 namespace wind {
 
-void WhatAboutDoubleQuotes();
-
+void TestEnum();
 
 } // namespace wind

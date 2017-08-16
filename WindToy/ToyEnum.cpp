@@ -2,7 +2,7 @@
 //	<one line to give the program's name and a brief idea of what it does.>
 //	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/8/14 17:21:17
+//	Created at 2017/8/16 11:24:45
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -19,11 +19,49 @@
 //	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#pragma once
+#include "stdafx.h"
+
+#include <iostream>
+#include "ToyEnum.h"
+
+using std::cout;
+using std::endl;
 
 namespace wind {
 
-void WhatAboutDoubleQuotes();
+namespace CardGame_Scoped
+{
+	enum class Suit { Diamonds, Hearts, Clubs, Spades };
 
+	void PlayCard(Suit suit)
+	{
+		if (suit == Suit::Clubs) // Enumerator must be qualified by enum type  
+		{ /*...*/
+		}
+	}
+}
+
+namespace CardGame_NonScoped
+{
+	enum Suit { Diamonds, Hearts, Clubs, Spades };
+
+	void PlayCard(Suit suit)
+	{
+		if (suit == Clubs) // Enumerator is visible without qualification  
+		{ /*...*/
+		}
+	}
+}
+
+void TestEnum()
+{
+	enum Suit { Diamonds = 5, Hearts, Clubs = 4, Spades };
+
+	cout << "Diamonds: " << Diamonds << endl;
+	cout << "Hearts: " << Hearts << endl;
+	cout << "Clubs: " << Clubs << endl;
+	cout << "Spades: " << Spades << endl;
+}
 
 } // namespace wind
+
