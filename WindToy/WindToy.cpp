@@ -33,6 +33,23 @@ int main()
 
 	//TestDataTypeLen();
 
+	int a;
+	a = 10;
+
+	enum EOpt
+	{
+		eOptAdd,
+		EOptDel,
+	};
+
+	string s1 = "1";
+	string s2 = "425[PM]";
+
+	time_t t = ::time_t(NULL);
+
+	char ch[1024] = { 0 };
+	sprintf_s(ch, 1023, "%d %d %d %d %s %s", eOptAdd, 1, 1, t, s1.c_str(), s2.c_str());
+
 	TestEnum();
 
 	system("pause");
