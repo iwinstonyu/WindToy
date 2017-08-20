@@ -22,9 +22,13 @@
 #include "stdafx.h"
 
 #include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <functional>
+#include <iterator>
 
-using std::cout;
-using std::endl;
+using namespace std;
 
 namespace wind {
 
@@ -34,6 +38,47 @@ void WhatAboutDoubleQuotes()
 	cout << '"' << endl;
 
 	cout << int('"') << endl;
+}
+
+// ÈÝÆ÷value_typeÊ¹ÓÃbind
+void BindAndValueType()
+{
+	struct SMyData
+	{
+		SMyData() {}
+		SMyData(int a, int b) : a_(a), b_(b) {}
+
+		int a_;
+		int b_;
+	};
+
+	// copy value a of vector<SMyData> int vector<int>
+	vector<SMyData> myDataVec;
+	for (int i = 0; i < 10; ++i)
+	{
+		myDataVec.emplace_back(i, i);
+	}
+
+	vector<int> myDataVecA;
+	transform(myDataVec.begin(), myDataVec.end(), std::back_inserter(myDataVecA), std::bind(&vector<SMyData>::value_type::a_, std::placeholders::_1));
+	for_each(myDataVecA.begin(), myDataVecA.end(), [](int a)->void {
+		printf("%d ", a);
+	});
+	printf("\n");
+
+
+	map<int, SMyData> myDataMap;
+	for (int i = 0; i < 10; ++i)
+	{
+		myDataMap.insert(make_pair(i, SMyData(i, i)));
+	}
+
+	vector<SMyData> resultVec1;
+	transform(myDataMap.begin(), myDataMap.end(), std::back_inserter(resultVec1), std::bind(&map<int, SMyData>::value_type::second, std::placeholders::_1));
+	for_each(resultVec1.begin(), resultVec1.end(), [](SMyData& myData)->void {
+		printf("%d ", myData.a_);
+	});
+	printf("\n");
 }
 
 } // namespace wind

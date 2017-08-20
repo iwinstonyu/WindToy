@@ -25,5 +25,7 @@ namespace wind {
 
 void WhatAboutDoubleQuotes();
 
+void BindAndValueType();
+
 
 } // namespace wind

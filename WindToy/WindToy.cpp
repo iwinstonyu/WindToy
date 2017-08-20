@@ -4,6 +4,10 @@
 #include "stdafx.h"
 
 #include <iostream>
+#include <vector>
+#include <map>
+#include <iterator>		// back_inserter
+#include <functional>	// bind
 #include "ToyOne.h"
 #include "ToyEnum.h"
 
@@ -27,30 +31,28 @@ void TestDataTypeLen()
 	cout << "TestDataTypeLen============================================" << endl << endl;
 }
 
+void BackInserter()
+{
+	typedef map<int, int> TNumMap;
+	TNumMap nums;
+	for (int i = 0; i < 3; ++i) {
+		nums[i] = i;
+	}
+
+	back_insert_iterator<TNumMap> biNums(nums);
+
+	bind(&TNumMap::value_type::second, placeholders::_1);
+}
+
 int main()
 {
 	//WhatAboutDoubleQuotes();
 
 	//TestDataTypeLen();
 
-	int a;
-	a = 10;
+	//TestEnum();
 
-	enum EOpt
-	{
-		eOptAdd,
-		EOptDel,
-	};
-
-	string s1 = "1";
-	string s2 = "425[PM]";
-
-	time_t t = ::time_t(NULL);
-
-	char ch[1024] = { 0 };
-	sprintf_s(ch, 1023, "%d %d %d %d %s %s", eOptAdd, 1, 1, t, s1.c_str(), s2.c_str());
-
-	TestEnum();
+	BindAndValueType();
 
 	system("pause");
     return 0;
