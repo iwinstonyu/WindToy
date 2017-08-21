@@ -2,7 +2,7 @@
 //	<one line to give the program's name and a brief idea of what it does.>
 //	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/8/14 17:21:17
+//	Created at 2017/8/14 17:21:27
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -19,13 +19,38 @@
 //	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#pragma once
+#include "stdafx.h"
+#include <iostream>
+#include "ToyStatic.h"
+
+using namespace std;
 
 namespace wind {
 
-void WhatAboutDoubleQuotes();
+static int gBaseId = 100;
 
-void BindAndValueType();
+int CBase1::cid_ = 0;
+static class CInitBase1Id {
+public:
+	CInitBase1Id() {
+		printf("CInitBase1Id\n");
+		CBase1::cid_ = gBaseId++;
+	}
+} gInitBase1Id;
 
+int CBase2::cid_ = 0;
+static class CInitBase2Id {
+public:
+	CInitBase2Id() {
+		printf("CInitBase2Id\n");
+		CBase2::cid_ = gBaseId++;
+	}
+} gInitBase2Id;
+
+void StaticInit() {
+	cout << CBase1::cid_ << endl;
+	cout << CBase2::cid_ << endl;
+}
 
 } // namespace wind
+

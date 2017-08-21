@@ -8,8 +8,9 @@
 #include <map>
 #include <iterator>		// back_inserter
 #include <functional>	// bind
-#include "ToyOne.h"
-#include "ToyEnum.h"
+#include "Toys/ToyOne.h"
+#include "Toys/ToyEnum.h"
+#include "Toys/ToyStatic.h"
 
 using namespace std;
 using namespace wind;
@@ -46,13 +47,16 @@ void BackInserter()
 
 int main()
 {
+	printf("enter main\n");
 	//WhatAboutDoubleQuotes();
 
 	//TestDataTypeLen();
 
 	//TestEnum();
 
-	BindAndValueType();
+	//BindAndValueType();
+
+	StaticInit();
 
 	system("pause");
     return 0;

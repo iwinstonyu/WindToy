@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Toys">
+      <UniqueIdentifier>{09d5b8ab-ba7f-4d67-bdbd-4352c4f2b90e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -24,11 +27,14 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ToyOne.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="Toys\ToyEnum.h">
+      <Filter>Toys</Filter>
     </ClInclude>
-    <ClInclude Include="ToyEnum.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="Toys\ToyOne.h">
+      <Filter>Toys</Filter>
+    </ClInclude>
+    <ClInclude Include="Toys\ToyStatic.h">
+      <Filter>Toys</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -38,11 +44,14 @@
     <ClCompile Include="WindToy.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ToyOne.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="Toys\ToyOne.cpp">
+      <Filter>Toys</Filter>
     </ClCompile>
-    <ClCompile Include="ToyEnum.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="Toys\ToyEnum.cpp">
+      <Filter>Toys</Filter>
+    </ClCompile>
+    <ClCompile Include="Toys\ToyStatic.cpp">
+      <Filter>Toys</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
