@@ -28,6 +28,9 @@
 #include <functional>
 #include <iterator>
 #include "ToyOne.h"
+#include <fstream>	// ofstream
+#include <ctime>	// time
+#include <sstream>	// ostringstream
 
 using namespace std;
 
@@ -80,6 +83,21 @@ void BindAndValueType()
 		printf("%d ", myData.a_);
 	});
 	printf("\n");
+}
+
+void WhatAboutWriteFile()
+{
+	ostringstream oss1, oss2;
+	oss1 << "foo" << endl;
+
+	ofstream ofs("TestWriteFile.txt", std::ofstream::app);
+	if (ofs) {
+		ofs << ::time(NULL) << ": Hello World" << endl;
+		ofs.close();
+	}
+	else {
+		cout << "Fail open file for ofstream" << endl;
+	}
 }
 
 } // namespace wind

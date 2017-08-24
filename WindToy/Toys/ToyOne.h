@@ -27,4 +27,6 @@ void WhatAboutDoubleQuotes();
 
 void BindAndValueType();
 
+void WhatAboutWriteFile();
+
 } // namespace wind

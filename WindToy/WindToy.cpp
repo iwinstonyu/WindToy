@@ -56,7 +56,9 @@ int main()
 
 	//BindAndValueType();
 
-	StaticInit();
+	//StaticInit();
+
+	WhatAboutWriteFile();
 
 	system("pause");
     return 0;
