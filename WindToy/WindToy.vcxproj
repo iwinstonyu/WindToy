@@ -149,6 +149,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Toys\ToyEnum.h" />
     <ClInclude Include="Toys\ToyOne.h" />
+    <ClInclude Include="Toys\ToySharedPtr.h" />
     <ClInclude Include="Toys\ToyStatic.h" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +161,7 @@
     </ClCompile>
     <ClCompile Include="Toys\ToyEnum.cpp" />
     <ClCompile Include="Toys\ToyOne.cpp" />
+    <ClCompile Include="Toys\ToySharedPtr.cpp" />
     <ClCompile Include="Toys\ToyStatic.cpp" />
     <ClCompile Include="WindToy.cpp" />
   </ItemGroup>

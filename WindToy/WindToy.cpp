@@ -11,6 +11,9 @@
 #include "Toys/ToyOne.h"
 #include "Toys/ToyEnum.h"
 #include "Toys/ToyStatic.h"
+#include "Toys/ToySharedPtr.h"
+#include <Windows.h>
+#include <functional>
 
 using namespace std;
 using namespace wind;
@@ -45,6 +48,31 @@ void BackInserter()
 	bind(&TNumMap::value_type::second, placeholders::_1);
 }
 
+void Print1() {
+	cout << "Print1" << endl;
+	Sleep(3000);
+	
+}
+
+void Print2() {
+	cout << "Print2" << endl;
+
+}
+
+void FuncVoidReturn() {
+	// 没有返回值可以不写
+	function<void(int, int)> func = [](int a, int b) {
+		a;
+		b;
+	};
+}
+
+
+class OtherClass {
+
+};
+
+
 int main()
 {
 	printf("enter main\n");
@@ -58,8 +86,10 @@ int main()
 
 	//StaticInit();
 
-	WhatAboutWriteFile();
+	//WhatAboutWriteFile();
 
+	WhatAboutSharedPtr();
+	
 	system("pause");
     return 0;
 }
