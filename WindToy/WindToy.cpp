@@ -8,6 +8,8 @@
 #include <map>
 #include <iterator>		// back_inserter
 #include <functional>	// bind
+#include <thread>
+#include <future>
 #include "Toys/ToyOne.h"
 #include "Toys/ToyEnum.h"
 #include "Toys/ToyStatic.h"
@@ -76,6 +78,7 @@ class OtherClass {
 int main()
 {
 	printf("enter main\n");
+	
 	//WhatAboutDoubleQuotes();
 
 	//TestDataTypeLen();
@@ -87,6 +90,20 @@ int main()
 	//StaticInit();
 
 	//WhatAboutWriteFile();
+
+	std::future<int> sum = std::async([]()->int {
+		cout << "Future thread: " << std::this_thread::get_id() << endl;
+		Sleep(10000);
+		int sum = 0;
+		for (int i = 0; i < 100; ++i) {
+			sum += i;
+		}
+		return sum;
+	});
+
+	cout << "This thread: " << std::this_thread::get_id() << endl;
+
+	cout << "Sum: " << sum.get() << endl;
 
 	WhatAboutSharedPtr();
 	
