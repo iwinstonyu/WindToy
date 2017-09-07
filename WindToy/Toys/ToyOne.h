@@ -29,4 +29,6 @@ void BindAndValueType();
 
 void WhatAboutWriteFile();
 
+void AboutScope();
+
 } // namespace wind

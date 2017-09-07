@@ -34,6 +34,8 @@
 
 using namespace std;
 
+int scopeNum = 10;
+
 namespace wind {
 
 void WhatAboutDoubleQuotes()
@@ -98,6 +100,16 @@ void WhatAboutWriteFile()
 	else {
 		cout << "Fail open file for ofstream" << endl;
 	}
+}
+
+void AboutScope()
+{
+	int scopeNum = 9;
+
+	cout << "function scope: " << scopeNum << endl;
+
+	// 取的是全局作用域的scopeNum
+	cout << "global scope: " << ::scopeNum << endl;
 }
 
 } // namespace wind

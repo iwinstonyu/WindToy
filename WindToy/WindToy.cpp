@@ -91,6 +91,8 @@ int main()
 
 	//WhatAboutWriteFile();
 
+	//AboutScope();
+
 	std::future<int> sum = std::async([]()->int {
 		cout << "Future thread: " << std::this_thread::get_id() << endl;
 		Sleep(10000);
