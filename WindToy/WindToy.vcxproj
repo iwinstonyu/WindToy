@@ -145,6 +145,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ToyThree.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ToyTwo.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Toys\ToyEnum.h" />
@@ -153,6 +161,14 @@
     <ClInclude Include="Toys\ToyStatic.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ToyThree.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ToyTwo.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
