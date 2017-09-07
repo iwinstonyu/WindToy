@@ -23,4 +23,14 @@
 
 extern int a;
 
+class CData {
+public:
+	CData();
+
+private:
+	int num_;
+};
+
+static CData gData;
+
 void PrintNumTwo();

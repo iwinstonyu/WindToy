@@ -25,8 +25,14 @@
 #include <iostream>
 using namespace std;
 
+int b;
+
+CData::CData() : num_(0) {
+	cout << "CData construct: " << num_++ << endl;
+}
 
 void PrintNumTwo()
 {
 	cout << "PrintNumTwo: " << a << endl;
+	cout << "b: " << b << endl;
 }
