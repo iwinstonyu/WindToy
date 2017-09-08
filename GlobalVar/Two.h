@@ -2,7 +2,7 @@
 //	<one line to give the program's name and a brief idea of what it does.>
 //	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/9/8 0:10:02
+//	Created at 2017/9/8 0:10:50
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -19,20 +19,6 @@
 //	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "stdafx.h"
+#pragma once
 
-#include "ToyTwo.h"
-#include <iostream>
-using namespace std;
-
-int b;
-
-CData::CData() : num_(0) {
-	cout << "CData construct: " << num_++ << endl;
-}
-
-void PrintNumTwo()
-{
-	cout << "PrintNumTwo: " << a << endl;
-	cout << "b: " << b << endl;
-}
+void PrintTwo();

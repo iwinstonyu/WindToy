@@ -2,7 +2,7 @@
 //	<one line to give the program's name and a brief idea of what it does.>
 //	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/9/8 0:10:50
+//	Created at 2017/9/8 0:09:48
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -21,4 +21,28 @@
 
 #pragma once
 
-void PrintNumThree();
+#include <iostream>
+#include "One.h"
+using namespace std;
+
+class CData2 {
+public:
+	CData2() { cout << "CData2 construct: " << endl; }
+
+	int& Num() { return num_; }
+
+private:
+	int num_;
+};
+
+const CData2 gData2;
+
+const int f = 10;
+
+enum class Fruit {
+	Apple,
+	Pear,
+	Orange,
+};
+
+#include "Three.inl"

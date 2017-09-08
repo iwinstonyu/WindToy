@@ -14,8 +14,6 @@
 #include "Toys/ToyEnum.h"
 #include "Toys/ToyStatic.h"
 #include "Toys/ToySharedPtr.h"
-#include "ToyTwo.h"
-#include "ToyThree.h"
 #include <Windows.h>
 #include <functional>
 
@@ -95,12 +93,9 @@ int main()
 
 	//AboutScope();
 
-	PrintNumTwo();
-	PrintNumThree();
-
 	std::future<int> sum = std::async([]()->int {
 		cout << "Future thread: " << std::this_thread::get_id() << endl;
-		Sleep(10000);
+		//Sleep(10000);
 		int sum = 0;
 		for (int i = 0; i < 100; ++i) {
 			sum += i;

@@ -2,7 +2,7 @@
 //	<one line to give the program's name and a brief idea of what it does.>
 //	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/9/8 0:10:54
+//	Created at 2017/9/8 0:09:48
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -19,15 +19,24 @@
 //	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "stdafx.h"
+#pragma once
 
-#include "ToyThree.h"
-#include <iostream>
-using namespace std;
+extern int a;
+const int b = 10;
+static int c = 10;
 
-int a = 10;
+extern const int h;
 
-void PrintNumThree()
-{
-	cout << "PrintNumThree: " << a << endl;
-}
+class CData {
+public:
+	CData();
+
+	int& Num() { return num_; }
+
+private:
+	int num_;
+};
+
+const CData gData;
+
+void PrintOne();

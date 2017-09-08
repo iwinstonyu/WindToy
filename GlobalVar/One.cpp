@@ -2,7 +2,7 @@
 //	<one line to give the program's name and a brief idea of what it does.>
 //	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/9/8 0:09:48
+//	Created at 2017/9/8 0:10:02
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -19,18 +19,43 @@
 //	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#pragma once
+#include "stdafx.h"
 
-extern int a;
+#include "One.h"
+#include <iostream>
+using namespace std;
 
-class CData {
-public:
-	CData();
+const int h = 10;
 
-private:
-	int num_;
-};
 
-static CData gData;
+CData::CData() : num_(0) {
+	cout << "CData construct: " << endl;
+}
 
-void PrintNumTwo();
+void PrintOne()
+{
+	cout << "PrintOne=================================================" << endl;
+
+	cout << "a: " << a << " " << &a << endl;
+
+	cout << "b: " << b << " " << &b << endl;
+	
+	cout << "c: " << c << " " << &c << endl;
+
+	cout << "d: " << d << " " << &d << endl;
+
+	cout << "wind::e: " << wind::e << " " << &wind::e << endl;
+
+	cout << "f: " << f << " " << &f << endl;
+
+	cout << "h: " << h << " " << &h << endl;
+	
+	cout << "gData1: " << &gData << endl;
+
+	cout << "gData2: " << &gData2 << endl;
+
+	cout << endl << endl;
+
+	// 在这里修改c的值，不会影响到Two.cpp中c的值
+	c = 100;
+}
