@@ -23,6 +23,8 @@
 
 namespace wind {
 
+#define NONSENSE_NUM 10
+
 void WhatAboutDoubleQuotes();
 
 void BindAndValueType();
@@ -30,5 +32,10 @@ void BindAndValueType();
 void WhatAboutWriteFile();
 
 void AboutScope();
+
+// 只是为了打印宏，通过项目属性->C/C++->预处理器->预处理到文件，编译后可以看到预处理的文件xx.i。
+// 可以看到宏已经被替换成具体的值。
+// 编译ToyOne.cpp的时候还要把#include "stdafx.h"注释掉
+void PrintNonsenseNum();
 
 } // namespace wind
