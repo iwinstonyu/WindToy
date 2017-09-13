@@ -69,6 +69,19 @@ void FuncVoidReturn() {
 	};
 }
 
+// MSDN
+// https://msdn.microsoft.com/en-us/library/ce3zzk1k(v=vs.140).aspx
+// https://msdn.microsoft.com/en-us/library/ksazx244.aspx
+// 如果缓存不够，一个无效参数回调将被唤醒，在DEBUG模式下是异常中断
+void AbountSprintfs() {
+	char sz[3] = "";
+	if (sprintf_s(sz, 3, "%s", "123") == -1) {
+		cout << "sprintf_s error" << endl;
+	}
+	else {
+		cout << sz << endl;
+	}
+}
 
 class OtherClass {
 
@@ -92,6 +105,8 @@ int main()
 	//WhatAboutWriteFile();
 
 	//AboutScope();
+
+	//AbountSprintfs();
 
 	std::future<int> sum = std::async([]()->int {
 		cout << "Future thread: " << std::this_thread::get_id() << endl;
