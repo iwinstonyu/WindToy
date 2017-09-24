@@ -112,5 +112,10 @@ void AboutScope()
 	cout << "global scope: " << ::scopeNum << endl;
 }
 
+void PrintNonsenseNum()
+{
+	cout << "Nonsense num: " << NONSENSE_NUM << endl;
+}
+
 } // namespace wind
 

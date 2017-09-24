@@ -52,5 +52,26 @@ void StaticInit() {
 	cout << CBase2::cid_ << endl;
 }
 
+// 域名限定
+namespace canusee {
+	const int a = 10;
+}
+
+void GetCanUSee1() {
+	using canusee::a;
+	cout << a << endl;
+}
+
+void GetCanUSee2() {
+	using namespace canusee;
+	cout << a << endl;
+}
+
+// 这个会报错
+// void GetCanUSee3() {
+// 	cout << a << endl;
+// }
+
+
 } // namespace wind
 
