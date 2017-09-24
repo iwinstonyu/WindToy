@@ -104,6 +104,28 @@ void TestAnoyClass() {
 	system("pause");
 }
 
+void TestMacroFunc(int a, int b) {
+	cout << "FILE: " << __FILE__ << endl;
+	cout << "LINE: " << __LINE__ << endl;
+	cout << "FUNC: " << __FUNCTION__ << endl;
+	cout << "FUNCTIONNAME: " << __FUNCDNAME__ << endl;
+}
+
+void TestFuture() {
+	std::future<int> sum = std::async([]()->int {
+		cout << "Future thread: " << std::this_thread::get_id() << endl;
+		//Sleep(10000);
+		int sum = 0;
+		for (int i = 0; i < 100; ++i) {
+			sum += i;
+		}
+		return sum;
+	});
+
+	cout << "This thread: " << std::this_thread::get_id() << endl;
+
+	cout << "Sum: " << sum.get() << endl;
+}
 
 int main()
 {
@@ -125,25 +147,14 @@ int main()
 
 	//WhatAboutSharedPtr();
 
-	TestAnoyClass();
+	//TestAnoyClass();
 
 	//AbountSprintfs();
 
-	std::future<int> sum = std::async([]()->int {
-		cout << "Future thread: " << std::this_thread::get_id() << endl;
-		//Sleep(10000);
-		int sum = 0;
-		for (int i = 0; i < 100; ++i) {
-			sum += i;
-		}
-		return sum;
-	});
+	//TestMacroFunc(1, 2);
 
-	cout << "This thread: " << std::this_thread::get_id() << endl;
+	TestFuture();
 
-	cout << "Sum: " << sum.get() << endl;
-
-	
 	system("pause");
     return 0;
 }
