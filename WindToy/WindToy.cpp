@@ -16,6 +16,7 @@
 #include "Toys/ToySharedPtr.h"
 #include <Windows.h>
 #include <functional>
+#include <sstream>
 
 using namespace std;
 using namespace wind;
@@ -74,6 +75,22 @@ class OtherClass {
 
 };
 
+void TestAnoyClass() {
+	class CAnoy {
+	public:
+		CAnoy() {};
+		~CAnoy() { cout << "CAnoy: " << oss_.str() << endl; }
+		ostringstream& OSS() { return oss_; }
+
+	private:
+		ostringstream oss_;
+	};
+
+	CAnoy().OSS() << "hello" << " " << "world" << "!";
+
+	system("pause");
+}
+
 
 int main()
 {
@@ -93,6 +110,10 @@ int main()
 
 	//AboutScope();
 
+	//WhatAboutSharedPtr();
+
+	TestAnoyClass();
+
 	std::future<int> sum = std::async([]()->int {
 		cout << "Future thread: " << std::this_thread::get_id() << endl;
 		//Sleep(10000);
@@ -107,7 +128,6 @@ int main()
 
 	cout << "Sum: " << sum.get() << endl;
 
-	WhatAboutSharedPtr();
 	
 	system("pause");
     return 0;
