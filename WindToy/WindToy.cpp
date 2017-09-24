@@ -18,6 +18,8 @@
 #include <functional>
 #include <sstream>
 
+#include <stdarg.h> // varargs
+
 using namespace std;
 using namespace wind;
 
@@ -104,6 +106,16 @@ void TestAnoyClass() {
 	system("pause");
 }
 
+extern "C" {
+	void TestExternC1() {
+		cout << "hello " << __FUNCTION__ << " " << __FUNCDNAME__ << endl;
+	}
+}
+
+extern "C" void TestExternC2() {
+	cout << "hello " << __FUNCTION__ << " " << __FUNCDNAME__ << endl;
+}
+
 void TestMacroFunc(int a, int b) {
 	cout << "FILE: " << __FILE__ << endl;
 	cout << "LINE: " << __LINE__ << endl;
@@ -125,6 +137,22 @@ void TestFuture() {
 	cout << "This thread: " << std::this_thread::get_id() << endl;
 
 	cout << "Sum: " << sum.get() << endl;
+}
+
+// https://msdn.microsoft.com/en-us/library/zxk0tw93(v=vs.140).aspx
+// __stdcall: 被调用者自己清除堆栈。The callee cleans the stack.
+// __cdecl: 调用者清除堆栈。The caller cleans the stack.
+// 对于具有变长参数的函数来说，因为参数数量是未知的，所以被调用者无法在编译期就确定要清除多少数据。
+// 也就是说，具有变长参数的函数的类型应该是__cdecl，由调用者来清除堆栈。
+// 但是在vs2015下测试使用__cdecl也是没问题的，原因在于编译器认为你肯定写错了，直接帮你把函数调用约定改成__cdecl。
+void __cdecl CallingConventionOnVarArg(char* format, ...) {
+	cout << "FUNCTIONNAME:" << __FUNCDNAME__ << endl;
+
+	va_list args;
+	va_start(args, format);
+	vprintf(format, args);
+	va_end(args);
+	cout << endl;
 }
 
 int main()
@@ -153,7 +181,12 @@ int main()
 
 	//TestMacroFunc(1, 2);
 
-	TestFuture();
+	//TestFuture();
+
+	//TestExternC1();
+	//TestExternC2();
+
+	CallingConventionOnVarArg("%s %d", "hello world", 2017);
 
 	system("pause");
     return 0;
