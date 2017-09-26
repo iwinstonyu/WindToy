@@ -155,6 +155,12 @@ void __cdecl CallingConventionOnVarArg(char* format, ...) {
 	cout << endl;
 }
 
+class CMacroFuncInClass {
+public:
+	CMacroFuncInClass() {}
+	void PrintMacroFunc() { cout << __FUNCTION__ << endl; }
+};
+
 int main()
 {
 	printf("enter main\n");
@@ -186,7 +192,9 @@ int main()
 	//TestExternC1();
 	//TestExternC2();
 
-	CallingConventionOnVarArg("%s %d", "hello world", 2017);
+	//CallingConventionOnVarArg("%s %d", "hello world", 2017);
+
+	CMacroFuncInClass().PrintMacroFunc();
 
 	system("pause");
     return 0;
