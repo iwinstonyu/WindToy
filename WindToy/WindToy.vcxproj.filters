@@ -39,6 +39,9 @@
     <ClInclude Include="Toys\ToySharedPtr.h">
       <Filter>Toys</Filter>
     </ClInclude>
+    <ClInclude Include="Toys\ToyC1061.h">
+      <Filter>Toys</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -57,6 +60,9 @@
       <Filter>Toys</Filter>
     </ClCompile>
     <ClCompile Include="Toys\ToySharedPtr.cpp">
+      <Filter>Toys</Filter>
+    </ClCompile>
+    <ClCompile Include="Toys\ToyC1061.cpp">
       <Filter>Toys</Filter>
     </ClCompile>
   </ItemGroup>

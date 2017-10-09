@@ -14,6 +14,7 @@
 #include "Toys/ToyEnum.h"
 #include "Toys/ToyStatic.h"
 #include "Toys/ToySharedPtr.h"
+#include "Toys/ToyC1061.h"
 #include <Windows.h>
 #include <functional>
 #include <sstream>
@@ -194,7 +195,9 @@ int main()
 
 	//CallingConventionOnVarArg("%s %d", "hello world", 2017);
 
-	CMacroFuncInClass().PrintMacroFunc();
+	//CMacroFuncInClass().PrintMacroFunc();
+
+	TestC1061();
 
 	system("pause");
     return 0;
