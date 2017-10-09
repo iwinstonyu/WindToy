@@ -197,7 +197,9 @@ int main()
 
 	//CMacroFuncInClass().PrintMacroFunc();
 
-	TestC1061();
+	//TestC1061();
+
+	TooLongString();
 
 	system("pause");
     return 0;

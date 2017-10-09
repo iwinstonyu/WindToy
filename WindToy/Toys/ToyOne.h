@@ -38,4 +38,6 @@ void AboutScope();
 // 编译ToyOne.cpp的时候还要把#include "stdafx.h"注释掉
 void PrintNonsenseNum();
 
+void TooLongString();
+
 } // namespace wind
