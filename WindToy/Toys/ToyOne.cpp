@@ -117,14 +117,36 @@ void PrintNonsenseNum()
 	cout << "Nonsense num: " << NONSENSE_NUM << endl;
 }
 
-// 一个字符串如果太长，可以分成多行来写，在每行的结尾加'\'表示换行，'\'后面不能再跟任何内容，要另起一行书写。
-void TooLongString()
+void TooLongString() 
 {
 	string str = "hello world\
 hello world\
 nhello world";
 
 	cout << str << endl;
+}
+
+void TestAnoyClass() 
+{
+	class CAnoy {
+	public:
+		CAnoy() {};
+		~CAnoy() { cout << "CAnoy: " << oss_.str() << endl; }
+		ostringstream& OSS() { return oss_; }
+
+	private:
+		ostringstream oss_;
+	};
+
+	CAnoy().OSS() << "hello" << " " << "world" << "!";
+}
+
+void FuncVoidReturn() {
+	// 没有返回值可以不写
+	function<void(int, int)> func = [](int a, int b) {
+		a;
+		b;
+	};
 }
 
 } // namespace wind

@@ -38,6 +38,13 @@ void AboutScope();
 // 编译ToyOne.cpp的时候还要把#include "stdafx.h"注释掉
 void PrintNonsenseNum();
 
+// 一个字符串如果太长，可以分成多行来写，在每行的结尾加'\'表示换行，'\'后面不能再跟任何内容，要另起一行书写。
 void TooLongString();
+
+// 构造一个临时对象，临时对象销毁的时候调用析构函数，输出流的内容
+void TestAnoyClass();
+
+// 匿名函数没有返回值可以不写void
+void FuncVoidReturn();
 
 } // namespace wind

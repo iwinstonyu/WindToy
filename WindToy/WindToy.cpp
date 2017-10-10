@@ -65,14 +65,6 @@ void Print2() {
 
 }
 
-void FuncVoidReturn() {
-	// 没有返回值可以不写
-	function<void(int, int)> func = [](int a, int b) {
-		a;
-		b;
-	};
-}
-
 // MSDN
 // https://msdn.microsoft.com/en-us/library/ce3zzk1k(v=vs.140).aspx
 // https://msdn.microsoft.com/en-us/library/ksazx244.aspx
@@ -90,22 +82,6 @@ void AbountSprintfs() {
 class OtherClass {
 
 };
-
-void TestAnoyClass() {
-	class CAnoy {
-	public:
-		CAnoy() {};
-		~CAnoy() { cout << "CAnoy: " << oss_.str() << endl; }
-		ostringstream& OSS() { return oss_; }
-
-	private:
-		ostringstream oss_;
-	};
-
-	CAnoy().OSS() << "hello" << " " << "world" << "!";
-
-	system("pause");
-}
 
 extern "C" {
 	void TestExternC1() {
@@ -162,6 +138,15 @@ public:
 	void PrintMacroFunc() { cout << __FUNCTION__ << endl; }
 };
 
+class VolInClass {
+public:
+	VolInClass() {}
+	~VolInClass() {}
+
+public:
+	volatile bool hasNext_;
+};
+
 int main()
 {
 	printf("enter main\n");
@@ -199,7 +184,46 @@ int main()
 
 	//TestC1061();
 
-	TooLongString();
+	//TooLongString();
+
+	VolInClass vol;
+	vol.hasNext_ = true;
+
+	bool hasNext;
+	hasNext = false;
+	if (vol.hasNext_)
+		hasNext = true;
+
+	int a;
+	a = 10;
+	if (hasNext)
+		a = 20;
+
+	a++;
+
+	++a;
+
+	a += 1;
+
+	int b = a++;
+
+	int c = ++a;
+
+	atomic<int> d = 10;
+	d += 20;
+
+	unsigned int e = 0;
+
+	unsigned int f = 100;
+
+	unsigned int g = e - f;
+
+	// 默认为空
+	shared_ptr<int> hRef = shared_ptr<int>();
+
+	bool i = hRef ? true : false;
+	if (!i)
+		g = 0;
 
 	system("pause");
     return 0;
