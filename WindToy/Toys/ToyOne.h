@@ -21,6 +21,8 @@
 
 #pragma once
 
+#include <Windows.h>
+
 namespace wind {
 
 #define NONSENSE_NUM 10
@@ -46,5 +48,9 @@ void TestAnoyClass();
 
 // 匿名函数没有返回值可以不写void
 void FuncVoidReturn();
+
+BOOL WINAPI ConsoleHandler(DWORD ctrlType);
+
+void TestFormatCout();
 
 } // namespace wind

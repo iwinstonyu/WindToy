@@ -31,6 +31,8 @@
 #include <fstream>	// ofstream
 #include <ctime>	// time
 #include <sstream>	// ostringstream
+#include <thread>	// this_thread
+#include <iomanip>	// setw setfill
 
 using namespace std;
 
@@ -147,6 +149,30 @@ void FuncVoidReturn() {
 		a;
 		b;
 	};
+}
+
+BOOL WINAPI ConsoleHandler(DWORD ctrlType) {
+	//this_thread::sleep_for(chrono::seconds(5));
+	//this_thread::sleep_for(chrono::milliseconds(5000));
+	
+	ofstream ofs("consolehandler.txt", ios::app);
+	switch (ctrlType)
+	{
+	case CTRL_C_EVENT:
+	case CTRL_CLOSE_EVENT:
+		ofs << "close console" << endl;
+		break;
+	default:
+		break;
+	}
+	ofs.close();
+
+	return TRUE;
+}
+
+void TestFormatCout()
+{
+	cout << setw(6) << setfill('0') << "1" << "2" << endl;
 }
 
 } // namespace wind

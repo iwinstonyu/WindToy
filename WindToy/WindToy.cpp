@@ -185,6 +185,13 @@ int main()
 	//TestC1061();
 
 	//TooLongString();
+	
+	// 如果直接到system("pause")，不会触发这个回调
+	SetConsoleCtrlHandler(ConsoleHandler, TRUE);
+	int input;
+	cin >> input;
+
+	TestFormatCout();
 
 	VolInClass vol;
 	vol.hasNext_ = true;
@@ -224,6 +231,8 @@ int main()
 	bool i = hRef ? true : false;
 	if (!i)
 		g = 0;
+
+	cin >> b;
 
 	system("pause");
     return 0;
