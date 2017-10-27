@@ -53,4 +53,6 @@ BOOL WINAPI ConsoleHandler(DWORD ctrlType);
 
 void TestFormatCout();
 
+void TestMessageBox();
+
 } // namespace wind

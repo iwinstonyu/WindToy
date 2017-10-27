@@ -175,5 +175,16 @@ void TestFormatCout()
 	cout << setw(6) << setfill('0') << "1" << "2" << endl;
 }
 
+void TestMessageBox()
+{
+	try {
+		throw 1;
+	}
+	catch (int e) {
+		cout << "exception: " << e << endl;
+		MessageBox(NULL, "exception", "exception", MB_OK|MB_TOPMOST);
+	}
+}
+
 } // namespace wind
 
