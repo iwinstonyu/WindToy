@@ -55,4 +55,7 @@ void TestFormatCout();
 
 void TestMessageBox();
 
+// 全局变量map直接初始化
+void TestGlobalMapInit();
+
 } // namespace wind

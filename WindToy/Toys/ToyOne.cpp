@@ -38,6 +38,8 @@ using namespace std;
 
 int scopeNum = 10;
 
+const map<int, int> numMap = { { 1, 1 },{ 2, 2 },{ 3,3 } };
+
 namespace wind {
 
 void WhatAboutDoubleQuotes()
@@ -184,6 +186,12 @@ void TestMessageBox()
 		cout << "exception: " << e << endl;
 		MessageBox(NULL, "exception", "exception", MB_OK|MB_TOPMOST);
 	}
+}
+
+void TestGlobalMapInit() {
+	for_each(numMap.begin(), numMap.end(), [](const pair<int, int>& numPair)->void {
+		cout << "num map: " << numPair.first << " " << numPair.second << endl;
+	});
 }
 
 } // namespace wind

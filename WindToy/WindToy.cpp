@@ -188,7 +188,9 @@ int main()
 
 	//TestFormatCout();
 
-	TestMessageBox();
+	//TestMessageBox();
+
+	TestGlobalMapInit();
 
 	// 如果直接到system("pause")，不会触发这个回调
 	SetConsoleCtrlHandler(ConsoleHandler, TRUE);
