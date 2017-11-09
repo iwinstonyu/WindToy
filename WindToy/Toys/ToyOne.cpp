@@ -194,5 +194,19 @@ void TestGlobalMapInit() {
 	});
 }
 
+extern "C" {
+
+int foo() {
+	cout << "hello foo" << endl;
+	bar();
+	return 0;
+}
+
+static int bar() {
+	cout << "hello bar" << endl;
+	return 0;
+}
+}
+
 } // namespace wind
 

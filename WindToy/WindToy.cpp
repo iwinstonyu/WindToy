@@ -193,7 +193,11 @@ int main()
 
 	//TestGlobalMapInit();
 
-	TestStaticLib();
+	//TestStaticLib();
+
+	foo();
+	// 即使包含了bar，但是由于是static函数，所以外部的bar定义对本文件来说不可见
+	//bar();
 
 	// 如果直接到system("pause")，不会触发这个回调
 	SetConsoleCtrlHandler(ConsoleHandler, TRUE);

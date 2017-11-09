@@ -58,4 +58,9 @@ void TestMessageBox();
 // 全局变量map直接初始化
 void TestGlobalMapInit();
 
+extern "C" {
+	int foo();
+	static int bar();
+}
+
 } // namespace wind
