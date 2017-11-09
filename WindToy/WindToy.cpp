@@ -15,6 +15,7 @@
 #include "Toys/ToyStatic.h"
 #include "Toys/ToySharedPtr.h"
 #include "Toys/ToyC1061.h"
+#include "Toys/ToyStaticLib.h"
 #include <Windows.h>
 #include <functional>
 #include <sstream>
@@ -190,7 +191,9 @@ int main()
 
 	//TestMessageBox();
 
-	TestGlobalMapInit();
+	//TestGlobalMapInit();
+
+	TestStaticLib();
 
 	// 如果直接到system("pause")，不会触发这个回调
 	SetConsoleCtrlHandler(ConsoleHandler, TRUE);
