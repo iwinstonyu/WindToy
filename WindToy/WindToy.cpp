@@ -148,10 +148,40 @@ public:
 	volatile bool hasNext_;
 };
 
+class AssignOperator {
+public:
+	AssignOperator() { cout << "AssignOperator default constructor" << endl; }
+	AssignOperator(const AssignOperator& rhs) { cout << "AssignOperator copy constructor" << endl; }
+	AssignOperator& operator=(const AssignOperator& rhs) { cout << "AssignOperator assign constructor" << endl; return *this; }
+};
+
+void AboutAssignOperator() {
+	// 调用默认构造函数
+	AssignOperator a1;
+	// 调用拷贝构造函数
+	AssignOperator a2 = a1;
+	// 调用默认构造函数
+	AssignOperator a3;
+	// 调用赋值构造函数
+	a3 = a1;
+}
+
+void AboutOstreamIt() {
+	vector<int> nums;
+	for (int i = 0; i < 10; ++i)
+		nums.push_back(i);
+	copy(nums.begin(), nums.end(), ostream_iterator<int>(std::cout, ","));
+	std::cout << endl;
+}
+
 int main()
 {
 	printf("enter main\n");
-	
+
+	cout << "MSC_VER: " << _MSC_VER << endl;
+
+	//AboutAssignOperator();
+
 	//WhatAboutDoubleQuotes();
 
 	//TestDataTypeLen();
