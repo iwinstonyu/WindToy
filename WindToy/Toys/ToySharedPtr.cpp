@@ -26,7 +26,7 @@ using namespace std;
 
 namespace wind {
 
-void WhatAboutSharedPtr()
+void AboutSharedPtr()
 {
 	// 传递的参数是DerivedClass, shared_ptr的类型是BaseClass，在析构的时候调用的是DerivedClass的析构函数
 	{

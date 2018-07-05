@@ -53,6 +53,6 @@ public:
 	}
 };
 
-void WhatAboutSharedPtr();
+void AboutSharedPtr();
 
 } // namespace wind

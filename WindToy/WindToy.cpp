@@ -55,16 +55,6 @@ void BackInserter()
 	bind(&TNumMap::value_type::second, placeholders::_1);
 }
 
-void Print1() {
-	cout << "Print1" << endl;
-	Sleep(3000);
-	
-}
-
-void Print2() {
-	cout << "Print2" << endl;
-
-}
 
 // MSDN
 // https://msdn.microsoft.com/en-us/library/ce3zzk1k(v=vs.140).aspx
@@ -80,9 +70,6 @@ void AbountSprintfs() {
 	}
 }
 
-class OtherClass {
-
-};
 
 extern "C" {
 	void TestExternC1() {
@@ -186,7 +173,7 @@ int main()
 
 	//AboutAssignOperator();
 
-	//WhatAboutDoubleQuotes();
+	//AboutDoubleQuotes();
 
 	//TestDataTypeLen();
 
@@ -196,11 +183,9 @@ int main()
 
 	//StaticInit();
 
-	//WhatAboutWriteFile();
-
 	//AboutScope();
 
-	//WhatAboutSharedPtr();
+	//AboutSharedPtr();
 
 	//TestAnoyClass();
 
@@ -210,8 +195,8 @@ int main()
 
 	//TestFuture();
 
-	//TestExternC1();
-	//TestExternC2();
+	TestExternC1();
+	TestExternC2();
 
 	//CallingConventionOnVarArg("%s %d", "hello world", 2017);
 

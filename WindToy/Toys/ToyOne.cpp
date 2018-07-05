@@ -42,7 +42,7 @@ const map<int, int> numMap = { { 1, 1 },{ 2, 2 },{ 3,3 } };
 
 namespace wind {
 
-void WhatAboutDoubleQuotes()
+void AboutDoubleQuotes()
 {
 	cout << "\"" << endl;
 	cout << '"' << endl;
@@ -89,21 +89,6 @@ void BindAndValueType()
 		printf("%d ", myData.a_);
 	});
 	printf("\n");
-}
-
-void WhatAboutWriteFile()
-{
-	ostringstream oss1, oss2;
-	oss1 << "foo" << endl;
-
-	ofstream ofs("TestWriteFile.txt", std::ofstream::app);
-	if (ofs) {
-		ofs << ::time(NULL) << ": Hello World" << endl;
-		ofs.close();
-	}
-	else {
-		cout << "Fail open file for ofstream" << endl;
-	}
 }
 
 void AboutScope()

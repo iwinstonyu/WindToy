@@ -27,11 +27,9 @@ namespace wind {
 
 #define NONSENSE_NUM 10
 
-void WhatAboutDoubleQuotes();
+void AboutDoubleQuotes();
 
 void BindAndValueType();
-
-void WhatAboutWriteFile();
 
 void AboutScope();
 
