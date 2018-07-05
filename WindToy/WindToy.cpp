@@ -15,6 +15,7 @@
 #include "Toys/ToyStatic.h"
 #include "Toys/ToySharedPtr.h"
 #include "Toys/ToyC1061.h"
+#include "Toys/ToyStaticLib.h"
 #include <Windows.h>
 #include <functional>
 #include <sstream>
@@ -65,14 +66,6 @@ void Print2() {
 
 }
 
-void FuncVoidReturn() {
-	// 没有返回值可以不写
-	function<void(int, int)> func = [](int a, int b) {
-		a;
-		b;
-	};
-}
-
 // MSDN
 // https://msdn.microsoft.com/en-us/library/ce3zzk1k(v=vs.140).aspx
 // https://msdn.microsoft.com/en-us/library/ksazx244.aspx
@@ -90,22 +83,6 @@ void AbountSprintfs() {
 class OtherClass {
 
 };
-
-void TestAnoyClass() {
-	class CAnoy {
-	public:
-		CAnoy() {};
-		~CAnoy() { cout << "CAnoy: " << oss_.str() << endl; }
-		ostringstream& OSS() { return oss_; }
-
-	private:
-		ostringstream oss_;
-	};
-
-	CAnoy().OSS() << "hello" << " " << "world" << "!";
-
-	system("pause");
-}
 
 extern "C" {
 	void TestExternC1() {
@@ -162,10 +139,53 @@ public:
 	void PrintMacroFunc() { cout << __FUNCTION__ << endl; }
 };
 
+class VolInClass {
+public:
+	VolInClass() {}
+	~VolInClass() {}
+
+public:
+	volatile bool hasNext_;
+};
+
+class AssignOperator {
+public:
+	AssignOperator() { cout << "AssignOperator default constructor" << endl; }
+	AssignOperator(const AssignOperator& rhs) { cout << "AssignOperator copy constructor" << endl; }
+	AssignOperator& operator=(const AssignOperator& rhs) { cout << "AssignOperator assign constructor" << endl; return *this; }
+};
+
+void AboutAssignOperator() {
+	// 调用默认构造函数
+	AssignOperator a1;
+	// 调用拷贝构造函数
+	AssignOperator a2 = a1;
+	// 调用默认构造函数
+	AssignOperator a3;
+	// 调用赋值构造函数
+	a3 = a1;
+}
+
+void AboutOstreamIt() {
+	vector<int> nums;
+	for (int i = 0; i < 10; ++i)
+		nums.push_back(i);
+	copy(nums.begin(), nums.end(), ostream_iterator<int>(std::cout, ","));
+	std::cout << endl;
+}
+
 int main()
 {
 	printf("enter main\n");
-	
+
+	cout << "MSC_VER: " << _MSC_VER << endl;
+
+	HelloDeprecated();
+
+	//float aaa = 1.7f;
+
+	//AboutAssignOperator();
+
 	//WhatAboutDoubleQuotes();
 
 	//TestDataTypeLen();
@@ -199,7 +219,66 @@ int main()
 
 	//TestC1061();
 
-	TooLongString();
+	//TooLongString();
+
+	//TestFormatCout();
+
+	//TestMessageBox();
+
+	//TestGlobalMapInit();
+
+	//TestStaticLib();
+
+	foo();
+	// 即使包含了bar，但是由于是static函数，所以外部的bar定义对本文件来说不可见
+	//bar();
+
+	// 如果直接到system("pause")，不会触发这个回调
+	SetConsoleCtrlHandler(ConsoleHandler, TRUE);
+	int input;
+	cin >> input;
+
+
+	VolInClass vol;
+	vol.hasNext_ = true;
+
+	bool hasNext;
+	hasNext = false;
+	if (vol.hasNext_)
+		hasNext = true;
+
+	int a;
+	a = 10;
+	if (hasNext)
+		a = 20;
+
+	a++;
+
+	++a;
+
+	a += 1;
+
+	int b = a++;
+
+	int c = ++a;
+
+	atomic<int> d = 10;
+	d += 20;
+
+	unsigned int e = 0;
+
+	unsigned int f = 100;
+
+	unsigned int g = e - f;
+
+	// 默认为空
+	shared_ptr<int> hRef = shared_ptr<int>();
+
+	bool i = hRef ? true : false;
+	if (!i)
+		g = 0;
+
+	cin >> b;
 
 	system("pause");
     return 0;

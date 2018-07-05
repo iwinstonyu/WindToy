@@ -31,10 +31,14 @@
 #include <fstream>	// ofstream
 #include <ctime>	// time
 #include <sstream>	// ostringstream
+#include <thread>	// this_thread
+#include <iomanip>	// setw setfill
 
 using namespace std;
 
 int scopeNum = 10;
+
+const map<int, int> numMap = { { 1, 1 },{ 2, 2 },{ 3,3 } };
 
 namespace wind {
 
@@ -117,14 +121,91 @@ void PrintNonsenseNum()
 	cout << "Nonsense num: " << NONSENSE_NUM << endl;
 }
 
-// 一个字符串如果太长，可以分成多行来写，在每行的结尾加'\'表示换行，'\'后面不能再跟任何内容，要另起一行书写。
-void TooLongString()
+void TooLongString() 
 {
 	string str = "hello world\
 hello world\
 nhello world";
 
 	cout << str << endl;
+}
+
+void TestAnoyClass() 
+{
+	class CAnoy {
+	public:
+		CAnoy() {};
+		~CAnoy() { cout << "CAnoy: " << oss_.str() << endl; }
+		ostringstream& OSS() { return oss_; }
+
+	private:
+		ostringstream oss_;
+	};
+
+	CAnoy().OSS() << "hello" << " " << "world" << "!";
+}
+
+void FuncVoidReturn() {
+	// 没有返回值可以不写
+	function<void(int, int)> func = [](int a, int b) {
+		a;
+		b;
+	};
+}
+
+BOOL WINAPI ConsoleHandler(DWORD ctrlType) {
+	//this_thread::sleep_for(chrono::seconds(5));
+	//this_thread::sleep_for(chrono::milliseconds(5000));
+	
+	ofstream ofs("consolehandler.txt", ios::app);
+	switch (ctrlType)
+	{
+	case CTRL_C_EVENT:
+	case CTRL_CLOSE_EVENT:
+		ofs << "close console" << endl;
+		break;
+	default:
+		break;
+	}
+	ofs.close();
+
+	return TRUE;
+}
+
+void TestFormatCout()
+{
+	cout << setw(6) << setfill('0') << "1" << "2" << endl;
+}
+
+void TestMessageBox()
+{
+	try {
+		throw 1;
+	}
+	catch (int e) {
+		cout << "exception: " << e << endl;
+		MessageBox(NULL, "exception", "exception", MB_OK|MB_TOPMOST);
+	}
+}
+
+void TestGlobalMapInit() {
+	for_each(numMap.begin(), numMap.end(), [](const pair<int, int>& numPair)->void {
+		cout << "num map: " << numPair.first << " " << numPair.second << endl;
+	});
+}
+
+extern "C" {
+
+int foo() {
+	cout << "hello foo" << endl;
+	bar();
+	return 0;
+}
+
+static int bar() {
+	cout << "hello bar" << endl;
+	return 0;
+}
 }
 
 } // namespace wind
