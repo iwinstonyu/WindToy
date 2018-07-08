@@ -167,8 +167,6 @@ int main()
 
 	cout << "MSC_VER: " << _MSC_VER << endl;
 
-	HelloDeprecated();
-
 	//float aaa = 1.7f;
 
 	//AboutAssignOperator();

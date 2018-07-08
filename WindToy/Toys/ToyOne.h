@@ -27,8 +27,6 @@ namespace wind {
 
 #define NONSENSE_NUM 10
 
-void AboutDoubleQuotes();
-
 void BindAndValueType();
 
 void AboutScope();
@@ -44,9 +42,6 @@ void TooLongString();
 // 构造一个临时对象，临时对象销毁的时候调用析构函数，输出流的内容
 void TestAnoyClass();
 
-// 匿名函数没有返回值可以不写void
-void FuncVoidReturn();
-
 BOOL WINAPI ConsoleHandler(DWORD ctrlType);
 
 void TestFormatCout();
@@ -59,45 +54,6 @@ void TestGlobalMapInit();
 extern "C" {
 	int foo();
 	static int bar();
-}
-
-//// deprecated.cpp  
-//// compile with: /W3  
-//#define MY_TEXT "function is deprecated"  
-//void func1(void) {}
-//__declspec(deprecated) void func1(int) {}
-//__declspec(deprecated("** this is a deprecated function **")) void func2(int) {}
-//__declspec(deprecated(MY_TEXT)) void func3(int) {}
-//
-//int HelloDeprecated() {
-//	func1();
-//	func1(1);   // C4996  
-//	func2(1);   // C4996  
-//	func3(1);   // C4996  
-//}
-
-void func1(void) {
-}
-
-void func1(int) {
-
-}
-
-void func2(void) {
-}
-
-__declspec(deprecated("Warning: 这个接口不再使用"))	\
-void func3(void) {
-}
-
-int HelloDeprecated() {
-//	func1();
-//	func2();
-//#pragma deprecated(func1, func2)
-//	func1(1);
-//	func1();   // C4995
-//	func2();   // C4995
-	func3();
 }
 
 } // namespace wind

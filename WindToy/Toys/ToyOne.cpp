@@ -42,14 +42,6 @@ const map<int, int> numMap = { { 1, 1 },{ 2, 2 },{ 3,3 } };
 
 namespace wind {
 
-void AboutDoubleQuotes()
-{
-	cout << "\"" << endl;
-	cout << '"' << endl;
-
-	cout << int('"') << endl;
-}
-
 // 容器value_type使用bind
 void BindAndValueType()
 {
@@ -128,14 +120,6 @@ void TestAnoyClass()
 	};
 
 	CAnoy().OSS() << "hello" << " " << "world" << "!";
-}
-
-void FuncVoidReturn() {
-	// 没有返回值可以不写
-	function<void(int, int)> func = [](int a, int b) {
-		a;
-		b;
-	};
 }
 
 BOOL WINAPI ConsoleHandler(DWORD ctrlType) {

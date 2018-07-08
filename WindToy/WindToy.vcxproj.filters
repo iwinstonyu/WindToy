@@ -45,6 +45,12 @@
     <ClInclude Include="Toys\ToyStaticLib.h">
       <Filter>Toys</Filter>
     </ClInclude>
+    <ClInclude Include="Toys\ToyPragmaPack.h">
+      <Filter>Toys</Filter>
+    </ClInclude>
+    <ClInclude Include="Toys\ToyDeprecated.h">
+      <Filter>Toys</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +75,12 @@
       <Filter>Toys</Filter>
     </ClCompile>
     <ClCompile Include="Toys\ToyStaticLib.cpp">
+      <Filter>Toys</Filter>
+    </ClCompile>
+    <ClCompile Include="Toys\ToyPragmaPack.cpp">
+      <Filter>Toys</Filter>
+    </ClCompile>
+    <ClCompile Include="Toys\ToyDeprecated.cpp">
       <Filter>Toys</Filter>
     </ClCompile>
   </ItemGroup>
