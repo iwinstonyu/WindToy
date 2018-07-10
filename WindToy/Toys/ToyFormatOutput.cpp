@@ -1,8 +1,8 @@
 //
 //	<one line to give the program's name and a brief idea of what it does.>
-//	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
+//	Copyright (C) 2018. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/8/14 17:21:17
+//	Created at 2018/7/10 11:37:45
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -19,30 +19,17 @@
 //	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#pragma once
-
-#include <Windows.h>
+#include "stdafx.h"
+#include "ToyFormatOutput.h"
+#include <iostream>
+#include <iomanip>	// setw, setfill
+using namespace std;
 
 namespace wind {
 
-void BindAndValueType();
-
-void AboutScope();
-
-// 一个字符串如果太长，可以分成多行来写，在每行的结尾加'\'表示换行，'\'后面不能再跟任何内容，要另起一行书写。
-void TooLongString();
-
-// 构造一个临时对象，临时对象销毁的时候调用析构函数，输出流的内容
-void TestAnoyClass();
-
-BOOL WINAPI ConsoleHandler(DWORD ctrlType);
-
-// 全局变量map直接初始化
-void TestGlobalMapInit();
-
-extern "C" {
-	int foo();
-	static int bar();
+void TestFormatCout()
+{
+	cout << setw(6) << setfill('0') << "1" << "2" << endl;
 }
 
-} // namespace wind
+}

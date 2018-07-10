@@ -16,9 +16,11 @@
 #include "Toys/ToySharedPtr.h"
 #include "Toys/ToyC1061.h"
 #include "Toys/ToyStaticLib.h"
+#include <deque>
 #include <Windows.h>
 #include <functional>
 #include <sstream>
+#include <algorithm>
 
 #include <stdarg.h> // varargs
 
@@ -73,7 +75,7 @@ void AbountSprintfs() {
 
 extern "C" {
 	void TestExternC1() {
-		cout << "hello " << __FUNCTION__ << " " << __FUNCDNAME__ << endl;
+cout << "hello " << __FUNCTION__ << " " << __FUNCDNAME__ << endl;
 	}
 }
 
@@ -193,8 +195,8 @@ int main()
 
 	//TestFuture();
 
-	TestExternC1();
-	TestExternC2();
+	//TestExternC1();
+	//TestExternC2();
 
 	//CallingConventionOnVarArg("%s %d", "hello world", 2017);
 
@@ -203,10 +205,6 @@ int main()
 	//TestC1061();
 
 	//TooLongString();
-
-	//TestFormatCout();
-
-	//TestMessageBox();
 
 	//TestGlobalMapInit();
 
@@ -256,6 +254,8 @@ int main()
 
 	// д╛хон╙©у
 	shared_ptr<int> hRef = shared_ptr<int>();
+	shared_ptr<int> hRef2 = make_shared<int>();
+	shared_ptr<int> hRef3;
 
 	bool i = hRef ? true : false;
 	if (!i)

@@ -13,3 +13,6 @@
 
 
 // TODO:  在此处引用程序需要的其他头文件
+
+#define PRINT_FUNCTION_BEG cout << endl; cout << "=======================" << __FUNCTION__ << "=======================" << endl;
+#define PRINT_FUNCTION_END cout << "=======================" << __FUNCTION__ << "=======================" << endl; cout << endl;

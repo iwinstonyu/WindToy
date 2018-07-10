@@ -1,8 +1,8 @@
 //
 //	<one line to give the program's name and a brief idea of what it does.>
-//	Copyright (C) 2017. WenJin Yu. windpenguin@gmail.com.
+//	Copyright (C) 2018. WenJin Yu. windpenguin@gmail.com.
 //
-//	Created at 2017/8/14 17:21:17
+//	Created at 2018/7/9 14:49:15
 //	Version 1.0
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -21,28 +21,30 @@
 
 #pragma once
 
-#include <Windows.h>
+#include <iostream>
+using namespace std;
 
 namespace wind {
 
-void BindAndValueType();
+struct MyNum
+{
+	MyNum(int num) : num_(num) {}
 
-void AboutScope();
+	bool operator>(const MyNum& rhs) const {
+		return num_ > rhs.num_;
+	}
 
-// 一个字符串如果太长，可以分成多行来写，在每行的结尾加'\'表示换行，'\'后面不能再跟任何内容，要另起一行书写。
-void TooLongString();
+	std::ostream& operator<<(std::ostream& stream)const {
+		stream << num_;
+		return stream;
+	}
 
-// 构造一个临时对象，临时对象销毁的时候调用析构函数，输出流的内容
-void TestAnoyClass();
+	int num_;
+};
 
-BOOL WINAPI ConsoleHandler(DWORD ctrlType);
 
-// 全局变量map直接初始化
-void TestGlobalMapInit();
+/// @brief 通常deque是升序排序，可以直接用upper_bound查找并插入元素。
+///		   如果deque是降序排序，那么使用upper_bound查找并插入元素的时候，需要传入greater作为比较函数
+void DequeInGreaterOrder();
 
-extern "C" {
-	int foo();
-	static int bar();
 }
-
-} // namespace wind
