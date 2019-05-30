@@ -22,6 +22,7 @@ int main()
 	cout << "a / b = " <<
 		MathFuncs::MyMathFuncs::Divide(a, b) << endl;
 
+	system("pause");
     return 0;
 }
 

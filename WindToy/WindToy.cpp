@@ -21,6 +21,7 @@
 #include <functional>
 #include <sstream>
 #include <algorithm>
+#include <random>
 
 #include <stdarg.h> // varargs
 
@@ -163,11 +164,219 @@ void AboutOstreamIt() {
 	std::cout << endl;
 }
 
+int32_t ZigZagDecode32(uint32_t n) {
+	// Note:  Using unsigned types prevent undefined behavior
+	int64_t n1 = -(static_cast<int64_t>(n) & 1);
+	uint32_t n2 = (n >> 1);
+	int32_t n3 = static_cast<int32_t>(n1 ^ n2);
+	return static_cast<int32_t>((n >> 1) ^ -(static_cast<int64_t>(n) & 1));
+}
+
+void AboutDestructor()
+{
+	class A
+	{
+	public:
+		A() { cout << "A construct" << endl; }
+		virtual ~A() { cout << "A destruct" << endl; }
+	};
+
+	class B : public A
+	{
+	public:
+		B() { cout << "B construct" << endl; }
+		virtual ~B() { cout << "B destruct" << endl; }
+	};
+
+	{
+		B b;
+	}
+	cout << "1===================" << endl;
+
+	{
+		B* pB = new B();
+		delete pB;
+	}
+	cout << "2===================" << endl;
+
+	{
+		A* pB = new B();
+		delete pB;
+	}
+	cout << "3===================" << endl;
+}
+
+namespace nsa {
+	void f1() { cout << "nsa f1" << endl; }
+	void f3() { cout << "nsa f3" << endl; }
+}
+
+namespace nsb {
+	void f1() { cout << "nsb f1" << endl; }
+
+	namespace nsa {
+		void f2() { cout << "nsb::nsa f2" << endl; }
+		void f1() { cout << "nsb::nsa f1" << endl; }
+	}
+}
+
+namespace nsc {
+	void f3() { cout << "nsa f3" << endl; }
+}
+
+
+namespace nsb {
+	using namespace nsc;
+}
+
+namespace nsb {
+	void test() { nsc::f3(); }
+}
+
+
+/// @brief shuffle在随机函数固定的情况下可重复
+void TestRandomReentrant()
+{
+	vector<int> nums;
+	for (int i = 1; i < 20; ++i) {
+		nums.push_back(i);
+	}
+	mt19937 mt(1);
+	shuffle(nums.begin(), nums.end(), mt);
+	for (auto num : nums) {
+		cout << num << " ";
+	}
+	cout << endl;
+}
+
+void TestRandom()
+{
+	mt19937 mt(100);
+	while (true) {
+		uniform_int_distribution<int> dist(0, 100);
+		for (int i = 0; i < 100; ++i)
+			cout << dist(mt) << endl;
+		cout << endl << endl;
+
+		Sleep(10000);
+	}
+}
+
+class A
+{
+public:
+	virtual void Greet() {
+		cout << "A" << endl;
+	}
+};
+
+class B : public A
+{
+public:
+	virtual void Greet() {
+		cout << "B" << endl;
+
+		__super::Greet();
+	}
+};
+
+class C : public B
+{
+public:
+	virtual void Greet() {
+		cout << "C" << endl;
+
+		__super::Greet();
+	}
+};
+
+class D
+{
+public:
+	D() : num_(100) { cout << "Construct D" << endl; }
+	D(const D& rhs) { cout << "Copy construct D" << endl; num_ = rhs.num_; }
+	D& operator=(const D& rhs) { cout << "Assignment operator D" << endl; if (this == &rhs) return *this; num_ = rhs.num_; return *this; }
+	~D() { cout << "Destroy D" << endl; }
+
+	void Hello() { cout << "Hello: " << num_ << endl; }
+	void SetNum(int num) { num_ = num; }
+
+private:
+	int num_;
+};
+
+void TestTuple()
+{
+	D d;
+	d.SetNum(1);
+	tuple<int, D> t1 = make_tuple(1, D());
+	d.Hello();
+	d.SetNum(2);
+	get<1>(t1).Hello();
+	get<1>(t1).SetNum(3);
+	get<1>(t1).Hello();
+}
+
+enum EPos
+{
+	EPos_0,
+	EPos_1,
+};
+
+void BitSet(uint32 val, int pos) {
+	val |= pos;
+}
+
+auto TestAutoRet() {
+	return make_tuple(1, 2, 3);
+}
+
+class J
+{
+public:
+	J() { cout << "Construct J 1" << endl; }
+	J(int a) : a_(a) { cout << "Construct J 2" << endl; }
+
+	int a_ = 100;
+};
+
+class K
+{
+public:
+	K(int x) : x_(x), y_(11) {}
+	K(int x, int y) : x_(x), y_(y) {}
+
+	void Print() {
+		cout << "X: " << x_ << "  Y: " << y_ << "  J: " << j_.a_ << endl;
+	}
+
+	int x_;
+	int y_ = 10;
+	J j_ = J(101);
+};
+
+
 int main()
 {
 	printf("enter main\n");
 
+	K k1(1);
+	k1.Print();
+	K k2(2);
+	k2.Print();
+
+	tuple<int, int, string> t = make_tuple(1, 2, "hello");
+	cout << get<0>(t) << endl;
+	cout << get<1>(t) << endl;
+	cout << get<2>(t) << endl;
+
+	TestRandom();
+
+	int32_t n = ZigZagDecode32(3);
+
 	cout << "MSC_VER: " << _MSC_VER << endl;
+
+	AboutDestructor();
 
 	//float aaa = 1.7f;
 

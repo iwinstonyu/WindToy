@@ -26,6 +26,7 @@
 #include "MyMath.h"
 
 #include <stdexcept>
+#include <json/json.h>
 
 using namespace std;
 
@@ -33,6 +34,10 @@ namespace MathFuncs
 {
 	double MyMathFuncs::Add(double a, double b)
 	{
+		Json::Value root;
+		root["a"] = 10;
+		root["a"].asUInt();
+
 		return a + b;
 	}
 
